@@ -1,10 +1,11 @@
-# RD Basic Webdev Setup
+# RD Basic Webdev Setup (Tailwind)
 
-Ein modernes Webentwicklungs-Setup mit Vite, Vitest, ESLint, Stylelint, PWA, Autoprefixer und mehr.
+Ein modernes Webentwicklungs-Setup mit Vite, Tailwind CSS, Vitest, ESLint, Stylelint, PWA, Autoprefixer und mehr.
 
 ## Features
 
 - Vite als Build-Tool
+- Tailwind CSS für Utility-First Styling
 - Vitest für Tests
 - ESLint & Stylelint für Code-Qualität
 - PWA-Unterstützung
@@ -24,10 +25,23 @@ npm install
 npm run dev
 ```
 
-## SaSS Compilen
+## Tailwind CSS nutzen
 
-```bash
-sass ./scss/style.sass ./scss/style.css
+Tailwind ist lokal installiert und wird über PostCSS eingebunden. Die Konfiguration findest du in `tailwind.config.js` und `postcss.config.js`.
+
+Tailwind-Klassen kannst du direkt in deinen HTML- und JS-Dateien verwenden. Das generierte CSS wird als `src/css/style.css` eingebunden.
+
+### Wichtige Content-Pfade in `tailwind.config.js`
+
+Damit Tailwind alle Klassen findet, sollten folgende Pfade im `content`-Array stehen:
+
+```js
+content: [
+  "./src/**/*.html",
+  "./src/js/**/*.js",
+  "./src/js/**/*.ts",
+  // Optional: "./src/**/*.vue", "./src/**/*.jsx", "./src/**/*.tsx"
+];
 ```
 
 ## Build für Produktion
@@ -49,9 +63,10 @@ Alle Variablen mit `VITE_`-Prefix in `.env` werden automatisch geladen.
 ## Ordnerstruktur
 
 - `src/` – Quellcode
-- `src/scss/variables.sass` – SASS-Variablen
-- `src/scss/style.sass` – SASS-Main-Datei
-- `public/` – Statische Assets
+- `src/assets/` – Statische Assets (Bilder, Fonts, etc.)
+- `src/js/` – JavaScript-Dateien
+- `src/css/` – Tailwind-Einstiegspunkt und generiertes CSS
+- `src/index.html` – Einstiegspunkt
 
 ## Hinweise
 

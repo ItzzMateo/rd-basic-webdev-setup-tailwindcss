@@ -24,6 +24,7 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "sass": "^1.89.2"
+    "@tailwindcss/vite": "^4.1.11",
+    "tailwindcss": "^4.1.11"
   }
 }

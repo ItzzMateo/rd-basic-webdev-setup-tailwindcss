@@ -1,5 +1,22 @@
 # DOKU
 
+## Tailwind CSS
+
+Tailwind ist lokal installiert und wird über PostCSS eingebunden. Die Konfiguration findest du in `tailwind.config.js` und `postcss.config.js`. Du kannst Tailwind-Klassen direkt in deinen HTML- und JS-Dateien verwenden.
+
+### Wichtige Content-Pfade in `tailwind.config.js`
+
+Damit Tailwind alle Klassen findet, sollten folgende Pfade im `content`-Array stehen:
+
+```js
+content: [
+  "./src/**/*.html",
+  "./src/js/**/*.js",
+  "./src/js/**/*.ts",
+  // Optional: "./src/**/*.vue", "./src/**/*.jsx", "./src/**/*.tsx"
+];
+```
+
 ## Bildoptimierung
 
 Für automatische Bildoptimierung kannst du das Plugin `vite-imagetools` nutzen:
@@ -34,7 +51,7 @@ Für automatische Bildoptimierung kannst du das Plugin `vite-imagetools` nutzen:
 
 - Lege eine `.env`-Datei im Projekt-Root an.
 - Alle Variablen mit `VITE_`-Prefix sind im Code über `import.meta.env` verfügbar.
-- Aber vergess nicht `NODE_ENV = "production" // production oder deployment` in deine .env rein zu packen
+- Aber vergiss nicht `NODE_ENV = "production" // production oder deployment` in deine .env rein zu packen
 
 ## Häufige Probleme
 

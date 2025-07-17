@@ -1,11 +1,15 @@
 import { defineConfig } from "vitest/config";
 import autoprefixer from "autoprefixer";
-import { resolve } from "path";
+import tailwindcss from "@tailwindcss/vite";
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
 import eslint from "vite-plugin-eslint";
 import { createHtmlPlugin } from "vite-plugin-html";
 import { VitePWA } from "vite-plugin-pwa";
 
-export default defineConfig({
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+export default defineConfig(({ mode }) => ({
   root: "src",
   resolve: {
     alias: {
@@ -17,17 +21,12 @@ export default defineConfig({
   build: {
     emptyOutDir: true,
     outDir: "./../dist",
-    sourcemap: process.env.NODE_ENV !== "production",
+    sourcemap: mode !== "production",
     target: "esnext",
   },
   css: {
-    preprocessorOptions: {
-      sass: {
-        additionalData: `@import "@/scss/variables.sass"`,
-      },
-    },
     postcss: {
-      plugins: [autoprefixer({})],
+      plugins: [tailwindcss(), autoprefixer({})],
     },
   },
   plugins: [
@@ -58,5 +57,6 @@ export default defineConfig({
         ],
       },
     }),
+    tailwindcss(),
   ],
-});
+}));
